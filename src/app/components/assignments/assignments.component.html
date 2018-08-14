@@ -1,27 +1,48 @@
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
 <br />
-<div>
-    <label>capacity
-      <input #passignmentCapacity />
-    </label>
-    <br />
-    <label>duration:
-        <input #assignmentDuration />
+<table border=1>
+  <tr>
+  <div class="center">
+  <thead>Create New Assignment</thead>
+  </div>
+  <tbody>
+<div ng-class="assignment">
+      <label>capacity
+        <input [(ngModel)]="assignment.capacity" placeholder="capacity"/>
       </label>
       <br />
-      <label>name:
-          <input #assignmentName />
+      <label>duration:
+          <input [(ngModel)]="assignment.duration" placeholder="duration"/>
         </label>
         <br />
-        <label>start_date
-            <input #assignmentStartDate />
+        <label>name:
+                <input [(ngModel)]="assignment.name" placeholder="name"/>
+              </label>
+              <br />
+        <label>start_date:
+            <input [(ngModel)]="assignment.start_date" placeholder="start_date"/>
           </label>
-        <br /> <br />
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(assignmentName.value); assignmentName.value=''">
-      add
-    </button>
-  </div>
-
+          <br />
+        <label>employee:
+                <input [(ngModel)]="assignment.employee" placeholder="employee"/>
+              </label>
+              <br />
+              <label>project:
+                <input [(ngModel)]="assignment.project" placeholder="project"/>
+              </label>
+              <br />
+    <button (click)="add(assignment)">add</button>
+</div>
+</tbody>
+</tr>
+</table>
+<br /> <br />
+<table border=3>
 <ul class="assignments">
     <li *ngFor="let assignment of assignments">
       <a routerLink="/assignmentDetail/{{assignment.id}}">
@@ -29,6 +50,9 @@
       </a> --
       {{assignment.duration}} -- {{assignment.name}} --{{assignment.start_date}}
       <button class="delete" title="delete assignment"
-  (click)="delete(assignment)">x</button>
+  (click)="delete(assignment)">delete</button>
     </li>
   </ul>
+</table>
+
+<br /> <br />

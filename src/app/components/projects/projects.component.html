@@ -1,27 +1,37 @@
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
 <br />
-<div>
-    <label>Project client:
-      <input #projectClient />
-    </label>
-    <br />
-    <label>Project maxCapacity:
-        <input #projectMaxCapacity />
-      </label>
-      <br />
-      <label>Project pname:
-          <input #projectPname />
-        </label>
-        <br />
-        <label>Project status:
-            <input #projectStatus />
+<table border=1>
+  <thead>
+    Create New Project
+  </thead>
+  <tbody>
+<div ng-class="project">
+          <label>client:
+            <input [(ngModel)]="project.client" placeholder="client"/>
           </label>
-        <br /> <br />
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(projectName.value); projectName.value=''">
-      add
-    </button>
-  </div>
-
+          <br />
+          <label>maxCapacity:
+              <input [(ngModel)]="project.maxCapacity" placeholder="maxCapacity"/>
+            </label>
+            <br />
+            <label>pname:
+                    <input [(ngModel)]="project.pname" placeholder="pname"/>
+                  </label>
+                  <br />
+            <label>status:
+                <input [(ngModel)]="project.status" placeholder="status"/>
+              </label>
+       <br />
+        <button (click)="add(project)">add</button>
+      </div>
+    </tbody>
+  </table>
+  <br /> <br />
+  <table border=3>
 <ul class="projects">
     <li *ngFor="let project of projects">
       <a routerLink="/projectDetail/{{project.id}}">
@@ -29,6 +39,9 @@
       </a> --
       {{project.maxCapacity}} -- {{project.pname}} --{{project.status}}
       <button class="delete" title="delete project"
-  (click)="delete(project)">x</button>
+  (click)="delete(project)">delete</button>
     </li>
   </ul>
+</table>
+
+<br /> <br />

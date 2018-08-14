@@ -9,11 +9,15 @@ import { ProjectService } from '../../services/project.service';
 })
 export class ProjectsComponent implements OnInit {
 
-  projects: Project[];
+  projects : Project[];
+  project : Project;
  
   constructor(
     private projectService: ProjectService
-  ) { }
+  ) { 
+
+    this.project = new Project();
+  }
  
   ngOnInit() {
    // this.employees = InMemoryDataService.
@@ -25,12 +29,12 @@ export class ProjectsComponent implements OnInit {
     .subscribe(projects => {this.projects = projects; console.log(JSON.stringify(projects))});
   }
 
-  add(pname: string): void {
-    pname = pname.trim();
-    if (!pname) { return; }
-    this.projectService.addProject({ pname } as Project)
-      .subscribe(project => {
-        this.projects.push(project);
+  add(Project): void {
+    
+    if (!Project) { return; }
+    this.projectService.addProject(Project)
+      .subscribe(Project => {
+        this.projects.push(Project);
       });
     }
 

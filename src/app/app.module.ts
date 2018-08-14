@@ -8,7 +8,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {Http,HttpModule} from '@angular/http';
 import { MessagesComponent } from './components/messages/messages.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-//import { InMemoryDataProjectService }  from './models/in-memory-data-project.service';
 import { InMemoryDataService }  from './models/in-memory-data.service';
 import { UiModule } from './ui/ui.module';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';

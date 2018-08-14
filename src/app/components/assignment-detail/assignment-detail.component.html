@@ -1,3 +1,31 @@
-<p>
-  assignment-detail works!
-</p>
+<div *ngIf="assignment">
+  <h2>{{assignment.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{assignment.id}}</div>
+  <div>
+    <label>capacity
+      <input [(ngModel)]="assignment.capacity" placeholder="capacity"/>
+    </label>
+    <br />
+    <label>duration:
+        <input [(ngModel)]="assignment.duration" placeholder="duration"/>
+      </label>
+      <br />
+      <label>name:
+              <input [(ngModel)]="assignment.name" placeholder="name"/>
+            </label>
+            <br />
+      <label>start_date:
+          <input [(ngModel)]="assignment.start_date" placeholder="start_date"/>
+        </label>
+        <br />
+      <label>employee:
+              <input [(ngModel)]="assignment.employee" placeholder="employee"/>
+            </label>
+            <br />
+            <label>project:
+              <input [(ngModel)]="assignment.project" placeholder="project"/>
+            </label>
+            <br />
+  </div>
+  <button (click)="save()">save</button>
+</div>

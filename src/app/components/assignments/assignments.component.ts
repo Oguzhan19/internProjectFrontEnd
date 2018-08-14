@@ -10,6 +10,7 @@ import { AssignmentService } from '../../services/assignment.service';
 export class AssignmentsComponent implements OnInit {
 
   assignments: Assignment[];
+  assignment:Assignment;
  
   constructor(
     private assignmentService: AssignmentService
@@ -18,6 +19,7 @@ export class AssignmentsComponent implements OnInit {
   ngOnInit() {
    // this.employees = InMemoryDataService.
     this.getAssignments();
+    this.assignment=new Assignment();
   }
  
   getAssignments(): void {
@@ -25,12 +27,11 @@ export class AssignmentsComponent implements OnInit {
     .subscribe(assignments => {this.assignments = assignments; console.log(JSON.stringify(assignments))});
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.assignmentService.addAssignment({ name } as Assignment)
-      .subscribe(assignment => {
-        this.assignments.push(assignment);
+  add(Assignment): void {
+    if (!Assignment) { return; }
+    this.assignmentService.addAssignment(Assignment)
+      .subscribe(Assignment => {
+        this.assignments.push(Assignment);
       });
     }
 

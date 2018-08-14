@@ -1,3 +1,6 @@
+import { Project } from './project';
+import { Employee } from './employee';
+
 export class Assignment{
 
     id: number;

@@ -10,10 +10,14 @@ import { EmployeeService } from '../../services/employee.service';
 export class EmployeesComponent implements OnInit {
 
   employees: Employee[];
+  employee: Employee;
  
   constructor(
     private employeeService: EmployeeService
-  ) { }
+  ) {
+      this.employee = new Employee();
+
+   }
  
   ngOnInit() {
    // this.employees = InMemoryDataService.
@@ -25,12 +29,12 @@ export class EmployeesComponent implements OnInit {
     .subscribe(employees => {this.employees = employees; console.log(JSON.stringify(employees))});
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.employeeService.addEmployee({ name } as Employee)
-      .subscribe(employee => {
-        this.employees.push(employee);
+  add(Employee): void {
+    
+    if (!Employee) { return; }
+    this.employeeService.addEmployee(Employee)
+      .subscribe(Employee => {
+        this.employees.push(Employee);
       });
     }
 

@@ -1,21 +1,35 @@
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
 <br />
-<div>
-    <label>Employee name:
-      <input #employeeName />
-    </label>
-    <label>Employee email:
-        <input #employeeEmail />
-      </label>
-      <label>Employee name:
-          <input #employeeStatus />
+<table border=1>
+  <thead>Create New Employee</thead>
+  <tbody>
+<div ng-class="employee">
+        <label>name:
+          <input [(ngModel)]="employee.name" placeholder="name"/>
         </label>
-        <br /> <br />
+        <br />
+        <label>email:
+            <input [(ngModel)]="employee.email" placeholder="email"/>
+          </label>
+          <br />
+          <label>status:
+              <input [(ngModel)]="employee.status" placeholder="status"/>
+            </label>
+      <br />
     <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(employeeName.value); employeeName.value=''">
+    <button (click)="add(employee)">
       add
     </button>
   </div>
+</tbody>
+</table>
+<br /> <br />
 
+<table border=3><tbody>
 <ul class="employees">
     <li *ngFor="let employee of employees">
       <a routerLink="/employeeDetail/{{employee.id}}">
@@ -23,6 +37,9 @@
       </a> --
       {{employee.email}} -- {{employee.status}} 
       <button class="delete" title="delete employee"
-  (click)="delete(employee)">x</button>
+  (click)="delete(employee)">delete</button>
     </li>
   </ul>
+</tbody>
+</table>
+<br /> <br />
