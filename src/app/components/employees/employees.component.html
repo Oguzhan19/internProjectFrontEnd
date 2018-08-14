@@ -1,0 +1,28 @@
+<br />
+<div>
+    <label>Employee name:
+      <input #employeeName />
+    </label>
+    <label>Employee email:
+        <input #employeeEmail />
+      </label>
+      <label>Employee name:
+          <input #employeeStatus />
+        </label>
+        <br /> <br />
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(employeeName.value); employeeName.value=''">
+      add
+    </button>
+  </div>
+
+<ul class="employees">
+    <li *ngFor="let employee of employees">
+      <a routerLink="/employeeDetail/{{employee.id}}">
+        <span class="badge">{{employee.id}}</span> {{employee.name}} 
+      </a> --
+      {{employee.email}} -- {{employee.status}} 
+      <button class="delete" title="delete employee"
+  (click)="delete(employee)">x</button>
+    </li>
+  </ul>

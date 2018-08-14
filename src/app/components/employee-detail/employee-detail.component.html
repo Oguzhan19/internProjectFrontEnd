@@ -1,0 +1,18 @@
+<div *ngIf="employee">
+    <h2>{{employee.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{employee.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="employee.name" placeholder="name"/>
+      </label>
+      <br />
+      <label>email:
+          <input [(ngModel)]="employee.email" placeholder="email"/>
+        </label>
+        <br />
+        <label>status:
+            <input [(ngModel)]="employee.status" placeholder="status"/>
+          </label>
+    </div>
+    <button (click)="save()">save</button>
+  </div>

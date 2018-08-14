@@ -1,0 +1,22 @@
+<div *ngIf="project">
+        <h2>{{project.pname | uppercase}} Details</h2>
+        <div><span>id: </span>{{project.id}}</div>
+        <div>
+          <label>client
+            <input [(ngModel)]="project.client" placeholder="client"/>
+          </label>
+          <br />
+          <label>maxCapacity:
+              <input [(ngModel)]="project.maxCapacity" placeholder="maxCapacity"/>
+            </label>
+            <br />
+            <label>pname:
+                    <input [(ngModel)]="project.pname" placeholder="pname"/>
+                  </label>
+                  <br />
+            <label>status:
+                <input [(ngModel)]="project.status" placeholder="status"/>
+              </label>
+        </div>
+        <button (click)="save()">save</button>
+      </div>

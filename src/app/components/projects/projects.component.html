@@ -1,0 +1,34 @@
+<br />
+<div>
+    <label>Project client:
+      <input #projectClient />
+    </label>
+    <br />
+    <label>Project maxCapacity:
+        <input #projectMaxCapacity />
+      </label>
+      <br />
+      <label>Project pname:
+          <input #projectPname />
+        </label>
+        <br />
+        <label>Project status:
+            <input #projectStatus />
+          </label>
+        <br /> <br />
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(projectName.value); projectName.value=''">
+      add
+    </button>
+  </div>
+
+<ul class="projects">
+    <li *ngFor="let project of projects">
+      <a routerLink="/projectDetail/{{project.id}}">
+        <span class="badge">{{project.id}}</span> {{project.client}} 
+      </a> --
+      {{project.maxCapacity}} -- {{project.pname}} --{{project.status}}
+      <button class="delete" title="delete project"
+  (click)="delete(project)">x</button>
+    </li>
+  </ul>

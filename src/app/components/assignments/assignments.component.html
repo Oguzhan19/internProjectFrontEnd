@@ -1,0 +1,34 @@
+<br />
+<div>
+    <label>capacity
+      <input #passignmentCapacity />
+    </label>
+    <br />
+    <label>duration:
+        <input #assignmentDuration />
+      </label>
+      <br />
+      <label>name:
+          <input #assignmentName />
+        </label>
+        <br />
+        <label>start_date
+            <input #assignmentStartDate />
+          </label>
+        <br /> <br />
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(assignmentName.value); assignmentName.value=''">
+      add
+    </button>
+  </div>
+
+<ul class="assignments">
+    <li *ngFor="let assignment of assignments">
+      <a routerLink="/assignmentDetail/{{assignment.id}}">
+        <span class="badge">{{assignment.id}}</span> {{assignment.capacity}} 
+      </a> --
+      {{assignment.duration}} -- {{assignment.name}} --{{assignment.start_date}}
+      <button class="delete" title="delete assignment"
+  (click)="delete(assignment)">x</button>
+    </li>
+  </ul>
