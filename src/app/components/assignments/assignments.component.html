@@ -1,58 +1,93 @@
 <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
-
 <br />
-<table border=1>
-  <tr>
-  <div class="center">
-  <thead>Create New Assignment</thead>
-  </div>
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>Capacity</th>
+            <th>duration</th>
+            <th>name</th>
+            <th>start_date</th>
+            <th>Employee</th>
+            <th> Project</th>
+            <th>Create New Assignment</th>
+        </tr>
+  </thead>
   <tbody>
-<div ng-class="assignment">
-      <label>capacity
+<tr ng-class="assignment">
+     <td> <label>
         <input [(ngModel)]="assignment.capacity" placeholder="capacity"/>
-      </label>
-      <br />
-      <label>duration:
+      </label></td>
+    <td>
+      <label>
           <input [(ngModel)]="assignment.duration" placeholder="duration"/>
         </label>
-        <br />
-        <label>name:
+      </td>
+        <td>
+        <label>
                 <input [(ngModel)]="assignment.name" placeholder="name"/>
               </label>
-              <br />
-        <label>start_date:
+            </td>
+          <td>
+        <label>
             <input [(ngModel)]="assignment.start_date" placeholder="start_date"/>
           </label>
-          <br />
-        <label>employee:
+        </td>
+      <td>
+        <label>
                 <input [(ngModel)]="assignment.employee" placeholder="employee"/>
               </label>
-              <br />
-              <label>project:
+            </td>
+          <td>
+              <label>
                 <input [(ngModel)]="assignment.project" placeholder="project"/>
               </label>
-              <br />
+            </td>
+          <td>
     <button (click)="add(assignment)">add</button>
-</div>
-</tbody>
+  </td>
 </tr>
+</tbody>
 </table>
+</div></div>
 <br /> <br />
-<table border=3>
-<ul class="assignments">
-    <li *ngFor="let assignment of assignments">
-      <a routerLink="/assignmentDetail/{{assignment.id}}">
-        <span class="badge">{{assignment.id}}</span> {{assignment.capacity}} 
-      </a> --
-      {{assignment.duration}} -- {{assignment.name}} --{{assignment.start_date}}
-      <button class="delete" title="delete assignment"
-  (click)="delete(assignment)">delete</button>
-    </li>
-  </ul>
-</table>
 
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Capacity</th>
+            <th>duration</th>
+            <th>name</th>
+            <th>start_date</th>
+            <th>Employee</th>
+            <th> Project</th>
+            <th>Create New Assignment</th>
+        </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let assignment of assignments">
+     <td> <a routerLink="/assignmentDetail/{{assignment.id}}">
+        <span class="badge">{{assignment.id}}</span>  
+      </a> </td>
+      <td> {{assignment.capacity}} </td>
+    <td>{{assignment.duration}}</td> 
+  <td> {{assignment.name}}</td> 
+<td> {{assignment.start_date}} </td>
+<td></td>
+<td></td>
+<td><button class="delete" title="delete assignment"
+  (click)="delete(assignment)">delete</button></td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 <br /> <br />

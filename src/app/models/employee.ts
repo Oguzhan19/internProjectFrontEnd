@@ -7,4 +7,5 @@ export class Employee{
     name: string;
     email: string;
     status: number;
+    assignment: Array<Assignment>;
 }

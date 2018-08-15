@@ -1,47 +1,75 @@
 <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <br />
-<table border=1>
-  <thead>
-    Create New Project
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>maxCapacity</th>
+            <th>pname</th>
+            <th>Status</th>
+            <th>Create New Project</th>
+        </tr>
   </thead>
   <tbody>
-<div ng-class="project">
-          <label>client:
+    
+      <tr ng-class="project">
+         <td><label>
             <input [(ngModel)]="project.client" placeholder="client"/>
           </label>
-          <br />
-          <label>maxCapacity:
+        </td> 
+        <td>
+          <label>
               <input [(ngModel)]="project.maxCapacity" placeholder="maxCapacity"/>
             </label>
-            <br />
-            <label>pname:
+          </td> 
+          <td>
+            <label>
                     <input [(ngModel)]="project.pname" placeholder="pname"/>
                   </label>
-                  <br />
-            <label>status:
+                </td> 
+                <td>
+            <label>
                 <input [(ngModel)]="project.status" placeholder="status"/>
               </label>
-       <br />
+            </td> 
+            <td>
         <button (click)="add(project)">add</button>
-      </div>
+        </td>
+      </tr>
     </tbody>
   </table>
+  </div></div>
   <br /> <br />
-  <table border=3>
-<ul class="projects">
-    <li *ngFor="let project of projects">
-      <a routerLink="/projectDetail/{{project.id}}">
-        <span class="badge">{{project.id}}</span> {{project.client}} 
-      </a> --
-      {{project.maxCapacity}} -- {{project.pname}} --{{project.status}}
-      <button class="delete" title="delete project"
-  (click)="delete(project)">delete</button>
-    </li>
-  </ul>
-</table>
+  <div class="container">
+      <div class="row col-md-6 col-md-offset-2 custyle">
+      <table class="table table-striped custab">
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>Client</th>
+            <th>maxCapacity</th>
+            <th>pname</th>
+            <th>Status</th>
+            <th>Delete Employee</th>
+          </tr>
+      </thead>
+      <tbody>
 
-<br /> <br />
+    <tr *ngFor="let project of projects">
+     <td> <a routerLink="/projectDetail/{{project.id}}">
+        <span class="badge">{{project.id}}</span> 
+      </a> </td> <td> {{project.client}} </td>
+      <td>{{project.maxCapacity}}</td> <td> {{project.pname}} </td> <td>{{project.status}} </td>
+      <td><button class="delete" title="delete project"
+  (click)="delete(project)">delete</button></td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+<br /><br />

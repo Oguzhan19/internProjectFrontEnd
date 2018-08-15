@@ -1,6 +1,13 @@
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
+  <table border=5>
+    <tbody>
 <div *ngIf="assignment">
   <h2>{{assignment.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{assignment.id}}</div>
+  <div><span><b>id:</b> </span>{{assignment.id}}</div>
   <div>
     <label>capacity
       <input [(ngModel)]="assignment.capacity" placeholder="capacity"/>
@@ -29,3 +36,5 @@
   </div>
   <button (click)="save()">save</button>
 </div>
+</tbody>
+</table>

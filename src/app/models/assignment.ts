@@ -8,6 +8,7 @@ export class Assignment{
     duration: number;
     name: string;
     start_date: Date;
-    employee: number;
-    project: number;
+    employee: Employee;
+    project: Project;
+
 }

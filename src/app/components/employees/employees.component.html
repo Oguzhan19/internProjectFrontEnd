@@ -1,45 +1,77 @@
 <head>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <br />
-<table border=1>
-  <thead>Create New Employee</thead>
+<div class="container">
+  <div class="row col-md-6 col-md-offset-2 custyle">
+  <table class="table table-striped custab">
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Create New employee</th>
+      </tr>
+  </thead>
   <tbody>
-<div ng-class="employee">
-        <label>name:
+
+  <tr ng-class="employee">
+        <td>
+        <label>
           <input [(ngModel)]="employee.name" placeholder="name"/>
         </label>
-        <br />
-        <label>email:
+      </td>
+        <td>
+        <label>
             <input [(ngModel)]="employee.email" placeholder="email"/>
           </label>
-          <br />
-          <label>status:
+        </td>
+        <td>
+          <label>
               <input [(ngModel)]="employee.status" placeholder="status"/>
             </label>
-      <br />
+          </td>
     <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(employee)">
+   <td> <button (click)="add(employee)">
       add
     </button>
-  </div>
+  </td>
+    </tr>
+  
 </tbody>
 </table>
+</div></div>
 <br /> <br />
-
-<table border=3><tbody>
-<ul class="employees">
-    <li *ngFor="let employee of employees">
-      <a routerLink="/employeeDetail/{{employee.id}}">
-        <span class="badge">{{employee.id}}</span> {{employee.name}} 
-      </a> --
-      {{employee.email}} -- {{employee.status}} 
-      <button class="delete" title="delete employee"
-  (click)="delete(employee)">delete</button>
-    </li>
-  </ul>
-</tbody>
+<div class="container">
+  <div class="row col-md-6 col-md-offset-2 custyle">
+  <table class="table table-striped custab">
+  <thead>
+      <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Delete Employees</th>
+      </tr>
+  </thead>
+  
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>
+      <a routerLink="/employeeDetail/{{employee.id}}">     
+        <span class="badge">
+          {{employee.id}}
+        </span>  
+      </a></td>
+     <td>{{employee.name}} </td>
+     <td> {{employee.email}}</td> 
+     <td> {{employee.status}} </td> 
+    <td>  <button class="delete" title="delete employee"
+  (click)="delete(employee)">delete</button></td> 
+     </tr>  
+  </tbody>
 </table>
+</div></div>
 <br /> <br />
