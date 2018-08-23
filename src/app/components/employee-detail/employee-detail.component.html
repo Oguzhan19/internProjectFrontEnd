@@ -5,7 +5,7 @@
   </head>
 <div *ngIf="employee">
     <h2>{{employee.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{employee.id}}</div>
+    <div><span>id: </span>{{employee.empID}}</div>
     <div>
       <label>name:
         <input [(ngModel)]="employee.name" placeholder="name"/>
@@ -18,6 +18,19 @@
         <label>status:
             <input [(ngModel)]="employee.status" placeholder="status"/>
           </label>
+          <br />
+          <!-- <label>password:
+            <input [(ngModel)]="employee.password" placeholder="password"/>
+          </label> -->
+          <td>
+       <b> Employee Type : </b> 
+            <select class="form-control" [(ngModel)]="employee.empType">
+                <option style="display:none" value="">Choose an option</option>
+                <option  [value]="0">0</option>
+                <option  [value]="1">1</option>
+              </select>
+              
+              </td>
     </div>
     <button (click)="save()">save</button>
   </div>

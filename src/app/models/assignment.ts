@@ -3,11 +3,11 @@ import { Employee } from './employee';
 
 export class Assignment{
 
-    id: number;
+    id?: number;
     capacity: number;
     duration: number;
     name: string;
-    start_date: Date;
+    startDate: Date;
     employee: Employee;
     project: Project;
 

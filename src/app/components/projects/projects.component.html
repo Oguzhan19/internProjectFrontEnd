@@ -19,25 +19,76 @@
   <tbody>
     
       <tr ng-class="project">
-         <td><label>
+
+          <td>
+              <input id="client" name="client" 
+              required minlength="3" 
+              [(ngModel)]="project.client" #client="ngModel" >
+            
+        <div *ngIf="client.invalid && (client.dirty || client.touched)"
+            class="alert alert-danger">
+        
+          <div *ngIf="client.errors.required">
+            Client is required.
+          </div>
+          <div *ngIf="client.errors.minlength">
+              Client must be at least 3 characters long.
+          </div>
+        </div>
+        </td>
+
+        <td>
+            <label>
+                <input [(ngModel)]="project.maxcapacity" placeholder="maxcapacity"/>
+              </label>
+       </td> 
+        
+      <td>
+          <input id="pname" name="pname" 
+          required minlength="3" 
+          [(ngModel)]="project.pname" #pname="ngModel" >
+        
+    <div *ngIf="pname.invalid && (pname.dirty || pname.touched)"
+        class="alert alert-danger">
+    
+      <div *ngIf="pname.errors.required">
+          pname is required.
+      </div>
+      <div *ngIf="pname.errors.minlength">
+          pname must be at least 3 characters long.
+      </div>
+    </div>
+    </td>
+
+    <td>
+        <input id="status" number="status" 
+        [(ngModel)]="project.status" #status="ngModel" required>
+      
+    <div *ngIf="status.invalid && (status.dirty || status.touched)"
+      class="alert alert-danger">
+    
+    <div *ngIf="status.errors.required">
+      Status is required.
+    </div>
+    
+    </div>
+    </td>
+
+         <!-- <td><label>
             <input [(ngModel)]="project.client" placeholder="client"/>
           </label>
-        </td> 
-        <td>
-          <label>
-              <input [(ngModel)]="project.maxCapacity" placeholder="maxCapacity"/>
-            </label>
-          </td> 
-          <td>
+        </td>  -->
+        <!--  -->
+          <!-- <td>
             <label>
                     <input [(ngModel)]="project.pname" placeholder="pname"/>
                   </label>
-                </td> 
-                <td>
+                </td>  -->
+                <!-- <td>
             <label>
                 <input [(ngModel)]="project.status" placeholder="status"/>
               </label>
-            </td> 
+            </td>  -->
             <td>
         <button (click)="add(project)">add</button>
         </td>
@@ -56,17 +107,22 @@
             <th>maxCapacity</th>
             <th>pname</th>
             <th>Status</th>
-            <th>Delete Employee</th>
+            <th>Delete Project</th>
           </tr>
       </thead>
       <tbody>
 
     <tr *ngFor="let project of projects">
-     <td> <a routerLink="/projectDetail/{{project.id}}">
+      <td> <a routerLink="/projectDetail/{{project.id}}">
         <span class="badge">{{project.id}}</span> 
-      </a> </td> <td> {{project.client}} </td>
-      <td>{{project.maxCapacity}}</td> <td> {{project.pname}} </td> <td>{{project.status}} </td>
-      <td><button class="delete" title="delete project"
+      </a> </td>
+
+       <td> {{project.client}} </td>
+      <td>{{project.maxcapacity}}</td>
+       <td> {{project.pname}} </td>
+        <td>{{project.status}} </td>
+      
+        <td><button class="delete" title="delete project"
   (click)="delete(project)">delete</button></td>
     </tr>
   </tbody>

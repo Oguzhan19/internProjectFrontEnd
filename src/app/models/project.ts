@@ -2,9 +2,9 @@ import { Employee } from './employee';
 import { Assignment } from './assignment';
 export class Project{
 
-    id: number;
+    id?: number;
     client: string;
-    maxCapacity: number;
+    maxcapacity: number;
     pname: string;
     status: number;
     assignment: Array<Assignment>;

@@ -1,0 +1,46 @@
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
+<div class="container">
+  <div class="row col-md-6 col-md-offset-2 custyle">
+  <table class="table table-striped custab">
+  <thead>
+      <tr>
+          
+          <th>Email</th>
+         
+          <th>Password</th>
+          
+      </tr>
+  </thead>
+  <tbody>
+
+  <tr ng-class="employee">
+        
+        <td>
+        <label>
+            <input [(ngModel)]="employee.email" placeholder="email"/>
+          </label>
+        </td>
+        
+       
+          
+          <td>
+            <label>
+                <input [(ngModel)]="employee.password" placeholder="password" />
+              </label>
+            </td>
+           
+           
+    <!-- (click) passes input value to add() and then clears the input -->
+   <!-- <td> <button (click)="add(employee)">
+      Log In
+    </button> -->
+  <!-- </td> -->
+    </tr>
+  
+</tbody>
+</table>
+</div></div>

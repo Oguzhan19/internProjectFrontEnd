@@ -3,8 +3,6 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </head>
-  <table border=5>
-    <tbody>
 <div *ngIf="assignment">
   <h2>{{assignment.name | uppercase}} Details</h2>
   <div><span><b>id:</b> </span>{{assignment.id}}</div>
@@ -21,20 +19,25 @@
               <input [(ngModel)]="assignment.name" placeholder="name"/>
             </label>
             <br />
-      <label>start_date:
-          <input [(ngModel)]="assignment.start_date" placeholder="start_date"/>
+      <label>startDate:
+          <input [(ngModel)]="assignment.startDate" placeholder="startDate"/>
         </label>
         <br />
-      <label>employee:
-              <input [(ngModel)]="assignment.employee" placeholder="employee"/>
-            </label>
-            <br />
-            <label>project:
-              <input [(ngModel)]="assignment.project" placeholder="project"/>
-            </label>
-            <br />
+        <td>
+          
+            <select class="form-control" [(ngModel)]="assignment.employee.empID">
+                <option style="display:none" value="">Choose an employee</option>
+                <option *ngFor="let employee of employees" [value]="employee.empID">{{employee.empID}}</option>
+              </select>
+              
+              </td>
+            <td>
+             
+            <select class="form-control" [(ngModel)]="assignment.project.id">
+                <option style="display:none" value="">Choose a project</option>
+                <option *ngFor="let project of projects" [value]="project.id">{{project.id}}</option>
+              </select>
+              </td>
   </div>
   <button (click)="save()">save</button>
 </div>
-</tbody>
-</table>

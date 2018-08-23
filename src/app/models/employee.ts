@@ -3,9 +3,11 @@ import { Assignment } from './assignment';
 
 export class Employee{
 
-    id: number;
+    empID?: number;
     name: string;
     email: string;
     status: number;
+    password: string;
+    empType: number;
     assignment: Array<Assignment>;
 }

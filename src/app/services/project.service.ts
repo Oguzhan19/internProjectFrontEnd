@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
  
-  private projectsUrl = 'api/projects';  // URL to web api
+  private projectsUrl = 'http://localhost:8080/project';  // URL to web api
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
@@ -29,7 +29,7 @@ getProjects (): Observable<Project[]> {
 }
 /** GET employee by id. Will 404 if id not found */
 getProject(id: number): Observable<Project> {
-  const url = `${this.projectsUrl}/${id}`;
+  const url = `http://localhost:8080/getProject?id=${id}`;
   return this.http.get<Project>(url).pipe(
     tap(_ => this.log(`fetched project id=${id}`)),
     catchError(this.handleError<Project>(`getProject id=${id}`))
@@ -45,7 +45,8 @@ updateProject (project: Project): Observable<any> {
 
 /** POST: add a new hero to the server */
 addProject (project: Project): Observable<Project> {
-  return this.http.post<Project>(this.projectsUrl, project, httpOptions).pipe(
+  const url='http://localhost:8080/newProject'
+  return this.http.post<Project>(url, project, httpOptions).pipe(
     tap((project: Project) => this.log(`added project w/ id=${project.id}`)),
     catchError(this.handleError<Project>('addProject'))
   );
@@ -54,7 +55,7 @@ addProject (project: Project): Observable<Project> {
 /** DELETE: delete the hero from the server */
 deleteProject (project: Project | number): Observable<Project> {
   const id = typeof project === 'number' ? project : project.id;
-  const url = `${this.projectsUrl}/${id}`;
+  const url = `http://localhost:8080/deleteProject?id=${id}`;
 
   return this.http.delete<Project>(url, httpOptions).pipe(
     tap(_ => this.log(`deleted project id=${id}`)),

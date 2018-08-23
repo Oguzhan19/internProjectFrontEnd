@@ -8,14 +8,18 @@ import { EmployeeDetailComponent }  from './components/employee-detail/employee-
 import { ProjectDetailComponent }  from './components/project-detail/project-detail.component';
 import { AssignmentDetailComponent }  from './components/assignment-detail/assignment-detail.component';
 import { DashboardComponent }   from './components/dashboard/dashboard.component';
+import {RegistrationComponent} from './components/registration/registration.component'
+import {LoginComponent} from './components/login/login.component'
 const routes: Routes = [
   { path: 'employees', component:  EmployeesComponent},
   { path: 'projects', component:  ProjectsComponent},
   { path: 'assignments', component:  AssignmentsComponent},
-  { path: 'employeeDetail/:id', component: EmployeeDetailComponent },
+  { path: 'employeeDetail/:empID', component: EmployeeDetailComponent },
   { path: 'projectDetail/:id', component: ProjectDetailComponent },
   { path: 'assignmentDetail/:id', component: AssignmentDetailComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'registration', component: RegistrationComponent},
+  { path: 'login', component:LoginComponent},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 

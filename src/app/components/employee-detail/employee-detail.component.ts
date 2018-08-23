@@ -18,8 +18,9 @@ export class EmployeeDetailComponent implements OnInit {
     this.getEmployee();
   }
   getEmployee(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.employeeService.getEmployee(id)
+    const empID = +this.route.snapshot.paramMap.get('empID');
+    console.log(empID);
+    this.employeeService.getEmployee(empID)
       .subscribe(employee => this.employee = employee);
   }
 
@@ -28,7 +29,7 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.employeeService.updateEmployee(this.employee)
+    this.employeeService.addEmployee(this.employee)
       .subscribe(() => this.goBack());
   }
 }

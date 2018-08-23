@@ -12,33 +12,122 @@
           <th>Name</th>
           <th>Email</th>
           <th>Status</th>
+          <th>Password</th>
+          <th>Employee Type</th>
           <th>Create New employee</th>
       </tr>
   </thead>
   <tbody>
 
   <tr ng-class="employee">
-        <td>
+    <td>
+      <input id="name" name="name" 
+      required minlength="3" 
+      [(ngModel)]="employee.name" #name="ngModel" >
+    
+<div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="name.errors.required">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors.minlength">
+    Name must be at least 3 characters long.
+  </div>
+</div>
+</td>
+    <td>
+        <input
+            id="email"
+            type="text"                
+            #email="ngModel"
+            [(ngModel)]="employee.email"
+            required
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+          
+    <div class="alert alert-danger" [hidden]="email.valid || email.untouched">
+        <div  *ngIf="email.errors && email.errors.required">
+            Email is required
+        </div>
+        <div  class="alert alert-danger" *ngIf="email.errors && email.errors.pattern">
+            Email is invalid
+        </div>
+    </div>
+  </td>
+<td>
+    <input id="status" number="status" 
+    [(ngModel)]="employee.status" #status="ngModel" required>
+  
+<div *ngIf="status.invalid && (status.dirty || status.touched)"
+  class="alert alert-danger">
+
+<div *ngIf="status.errors.required">
+  Status is required.
+</div>
+</div>
+</td>
+<td>
+    <input
+        id="password"
+        type="text"                
+        #password="ngModel"
+        [(ngModel)]="employee.password"
+        required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,12}$">
+      
+<div class="alert alert-danger" [hidden]="password.valid || password.untouched">
+    <div  *ngIf="password.errors && password.errors.required">
+        password is required
+    </div>
+    <div  class="alert alert-danger" *ngIf="password.errors && password.errors.pattern">
+        password should be 8 characters at min and at most 12. It should have at least 
+        one uppercase letter and at least one number
+    </div>
+</div>
+</td>
+<td>
+    <select class="form-control" [(ngModel)]="employee.empType">
+        <option style="display:none" value="">Choose the empType</option>
+        <option  [value]="0">0</option>
+        <option  [value]="1">1</option>
+      </select>
+</td>
+
+        <!-- <td>
         <label>
-          <input [(ngModel)]="employee.name" placeholder="name"/>
+          <input type="text" [(ngModel)]="employee.name" name="name" />
         </label>
-      </td>
-        <td>
+      </td> -->
+
+        <!-- <td>
         <label>
-            <input [(ngModel)]="employee.email" placeholder="email"/>
+            <input type="email" [(ngModel)]="employee.email" name="email"/>
           </label>
-        </td>
-        <td>
+        </td> -->
+
+
+      
+        <!-- <td>
           <label>
-              <input [(ngModel)]="employee.status" placeholder="status"/>
+              <input type="text" [(ngModel)]="employee.status" name="status"/>
             </label>
           </td>
-    <!-- (click) passes input value to add() and then clears the input -->
-   <td> <button (click)="add(employee)">
-      add
-    </button>
-  </td>
-    </tr>
+       -->
+          <!-- <td>
+            <label>
+                <input type="password" [(ngModel)]="employee.password" name="password" />
+            </label>
+            </td>
+            
+            <td> -->
+              
+                
+    <!-- (click) passes input value to add()  -->
+         <td> <button (click)="add(employee)">
+          add
+         </button>
+         </td>
+         </tr>
   
 </tbody>
 </table>
@@ -53,21 +142,25 @@
           <th>Name</th>
           <th>Email</th>
           <th>Status</th>
+          <th>Password</th>
+          <th>Employee Type</th>
           <th>Delete Employees</th>
       </tr>
   </thead>
-  
     <tbody>
         <tr *ngFor="let employee of employees">
             <td>
-      <a routerLink="/employeeDetail/{{employee.id}}">     
+      <a routerLink="/employeeDetail/{{employee.empID}}">     
         <span class="badge">
-          {{employee.id}}
+          {{employee.empID}}
         </span>  
-      </a></td>
+      </a>
+    </td>
      <td>{{employee.name}} </td>
      <td> {{employee.email}}</td> 
-     <td> {{employee.status}} </td> 
+     <td> {{employee.status}} </td>
+     <td> ***** </td> 
+     <td> {{employee.empType}} </td> 
     <td>  <button class="delete" title="delete employee"
   (click)="delete(employee)">delete</button></td> 
      </tr>  
@@ -75,3 +168,7 @@
 </table>
 </div></div>
 <br /> <br />
+
+
+
+

@@ -8,8 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {Http,HttpModule} from '@angular/http';
 import { MessagesComponent } from './components/messages/messages.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './models/in-memory-data.service';
-import { UiModule } from './ui/ui.module';
+//import { InMemoryDataService }  from './models/in-memory-data.service';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +17,8 @@ import { ProjectDetailComponent } from './components/project-detail/project-deta
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AssignmentsComponent } from './components/assignments/assignments.component';
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
 
 //enableProdMode();
 @NgModule({
@@ -27,13 +28,15 @@ import { AssignmentDetailComponent } from './components/assignment-detail/assign
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-    InMemoryDataService, { dataEncapsulation: false }
-    ),
-    UiModule
+    ReactiveFormsModule
+    // ,
+    // HttpClientInMemoryWebApiModule.forRoot(
+    // InMemoryDataService, { dataEncapsulation: false }
+    // )
+    
   ],
   declarations: [
+    
     AppComponent,
     EmployeesComponent,
     MessagesComponent,
@@ -42,7 +45,9 @@ import { AssignmentDetailComponent } from './components/assignment-detail/assign
     ProjectDetailComponent,
     DashboardComponent,
     AssignmentsComponent,
-    AssignmentDetailComponent
+    AssignmentDetailComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   
   providers: [],

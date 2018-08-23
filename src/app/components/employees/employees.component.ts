@@ -20,7 +20,6 @@ export class EmployeesComponent implements OnInit {
    }
  
   ngOnInit() {
-   // this.employees = InMemoryDataService.
     this.getEmployees();
   }
  

@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
  
-  private employeesUrl = 'api/employees';  // URL to web api
+  private employeesUrl = 'http://localhost:8080/employee';  // URL to web api
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
@@ -28,36 +28,37 @@ getEmployees (): Observable<Employee[]> {
     );
 }
 /** GET employee by id. Will 404 if id not found */
-getEmployee(id: number): Observable<Employee> {
-  const url = `${this.employeesUrl}/${id}`;
+getEmployee(empID: number): Observable<Employee> {
+  const url = `http://localhost:8080/getEmployee?id=${empID}`;
   return this.http.get<Employee>(url).pipe(
-    tap(_ => this.log(`fetched employee id=${id}`)),
-    catchError(this.handleError<Employee>(`getEmployee id=${id}`))
+    tap(_ => this.log(`fetched employee empID=${empID}`)),
+    catchError(this.handleError<Employee>(`getEmployee empID=${empID}`))
   );
 }
 /** PUT: update the hero on the server */
 updateEmployee (employee: Employee): Observable<any> {
-  return this.http.put(this.employeesUrl, employee, httpOptions).pipe(
-    tap(_ => this.log(`updated employee id=${employee.id}`)),
-    catchError(this.handleError<any>('updateEmployee'))
-  );
+  const url = `http://localhost:8080/updateEmployee`;
+  return this.http.post<Employee>(url, employee, httpOptions).pipe(
+   // tap((employee: Employee) => this.log(`added employee w/ empID=${employee.empID}`)),
+    catchError(this.handleError<Employee>('addEmployee')));
 }
 
 /** POST: add a new hero to the server */
 addEmployee (employee: Employee): Observable<Employee> {
-  return this.http.post<Employee>(this.employeesUrl, employee, httpOptions).pipe(
-    tap((employee: Employee) => this.log(`added employee w/ id=${employee.id}`)),
+  const url = `http://localhost:8080/newEmployee`;
+  return this.http.post<Employee>(url, employee, httpOptions).pipe(
+   // tap((employee: Employee) => this.log(`added employee w/ empID=${employee.empID}`)),
     catchError(this.handleError<Employee>('addEmployee'))
   );
 }
 
 /** DELETE: delete the hero from the server */
 deleteEmployee (employee: Employee | number): Observable<Employee> {
-  const id = typeof employee === 'number' ? employee : employee.id;
-  const url = `${this.employeesUrl}/${id}`;
+  const empID = typeof employee === 'number' ? employee : employee.empID;
+  const url = `http://localhost:8080/deleteEmployee?empID=${empID}`;
 
   return this.http.delete<Employee>(url, httpOptions).pipe(
-    tap(_ => this.log(`deleted employee id=${id}`)),
+    tap(_ => this.log(`deleted employee empID=${empID}`)),
     catchError(this.handleError<Employee>('deleteEmployee'))
   );
 }
